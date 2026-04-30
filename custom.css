@@ -23,6 +23,7 @@ h1,h2 { margin:.2rem 0; }
 .hidden { display:none; }
 .skin-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(140px,1fr)); gap:.5rem; }
 .skin-btn { border:1px solid rgba(255,255,255,.35); border-radius:12px; color:#fff; padding:.6rem; text-align:left; text-shadow: 0 1px 2px rgba(0,0,0,.4); }
+.skin-preview{width:100%;height:50px;object-fit:cover;border-radius:8px;margin-bottom:.35rem;border:1px solid rgba(255,255,255,.4);}
 .skin-btn .skin-icon { font-size:1.2rem; margin-bottom:.25rem; }
 .skin-btn.active { outline:2px solid #fff; }
 .skin-btn.locked { opacity:.45; filter: grayscale(1); }
