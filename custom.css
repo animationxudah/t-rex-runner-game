@@ -40,3 +40,7 @@ h1,h2 { margin:.2rem 0; }
 .skin-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:.25rem;}
 .skin-btn{min-width:145px;scroll-snap-align:start;}
 .flying .trex-game canvas{box-shadow:0 0 18px rgba(34,211,238,.65);}
+
+.mobile-controls{display:flex;gap:.6rem;justify-content:center;}
+.mobile-controls button{background:#0ea5e9;color:#fff;border:none;border-radius:10px;padding:.7rem 1rem;font-weight:600;}
+.mobile-controls.hidden{display:none;}

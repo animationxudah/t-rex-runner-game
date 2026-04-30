@@ -41,6 +41,12 @@ window.addEventListener('load', () => {
   const resetBtn = document.getElementById('reset-data');
   const arena = document.querySelector('.trex-game-wrap');
 
+  const mobileControls = document.getElementById('mobile-controls');
+  const btnJump = document.getElementById('btn-jump');
+  const btnFly = document.getElementById('btn-fly');
+  const isMobile = window.matchMedia('(pointer: coarse)').matches || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  if (isMobile) mobileControls.classList.remove('hidden');
+
   const runner = new Runner(gameRoot);
   let score = 0, aliveTicker = 0, lastFrame = performance.now(), lastCrashed = false, skinRolledThisRun = false;
   let hazards = [], hazardTimer = 0;
@@ -89,6 +95,8 @@ window.addEventListener('load', () => {
   };
   document.addEventListener('keydown', e => { if (e.code === 'ArrowUp' || e.code === 'Space') activateFlight(); });
   document.addEventListener('touchstart', activateFlight, { passive: true });
+  if (btnJump) btnJump.onclick = () => runner?.onKeyDown?.({ keyCode: 32, target: document.body, preventDefault(){} });
+  if (btnFly) btnFly.onclick = activateFlight;
 
   resetBtn.onclick = () => { localStorage.removeItem(STORAGE_KEY); location.reload(); };
 
@@ -121,7 +129,7 @@ window.addEventListener('load', () => {
         const dinoX = runner.tRex?.xPos || 0; const dinoY = runner.tRex?.yPos || 90;
         const hitX = h.x < dinoX + 32 && h.x + h.w > dinoX + 4;
         const hitY = h.air ? dinoY < 88 : dinoY > 84;
-        if (hitX && hitY) { if (runner.gameOver) runner.gameOver(); runner.crashed = true; }
+        if (hitX && hitY) { if (runner.gameOver) runner.gameOver(); runner.crashed = true; hazards.forEach(z=>z.el.remove()); hazards=[]; }
         if (!h.passed && h.x + h.w < dinoX) { h.passed = true; score += 1; }
       });
       hazards = hazards.filter(h => { if (h.x < -120) { h.el.remove(); return false; } return true; });
