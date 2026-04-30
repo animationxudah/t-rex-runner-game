@@ -37,8 +37,8 @@ h1,h2 { margin:.2rem 0; }
 .hazard.air{bottom:72px;width:64px;height:36px;}
 .locker-head{display:flex;justify-content:space-between;align-items:center;gap:.75rem;flex-wrap:wrap;}
 .reset-btn{background:#ef4444;border:none;color:#fff;padding:.4rem .7rem;border-radius:8px;cursor:pointer;}
-.skin-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:.25rem;}
-.skin-btn{min-width:145px;scroll-snap-align:start;}
+.skin-grid{display:flex;flex-direction:column;gap:.6rem;max-height:320px;overflow-y:auto;padding-right:.2rem;}
+.skin-btn{width:100%;}
 .flying .trex-game canvas{box-shadow:0 0 18px rgba(34,211,238,.65);}
 
 .mobile-controls{display:flex;gap:.6rem;justify-content:center;}

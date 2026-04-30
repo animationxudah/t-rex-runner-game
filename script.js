@@ -80,6 +80,7 @@ window.addEventListener('load', () => {
 
   const spawnHazard = () => {
     if (runner.crashed || !runner.playing) return;
+    if (runner.horizon?.obstacles?.length) return;
     const data = HAZARDS[Math.floor(Math.random() * HAZARDS.length)];
     const el = document.createElement('img');
     el.src = data.src; el.className = `hazard ${data.cls}`; el.style.width = `${data.w}px`; el.style.height = `${data.h}px`; el.style.left = '760px';
@@ -123,6 +124,7 @@ window.addEventListener('load', () => {
     if (!runner.crashed && runner.playing) {
       hazardTimer += dt;
       if (hazardTimer > 1200 + Math.random() * 900) { spawnHazard(); hazardTimer = 0; }
+      if (runner.horizon?.obstacles?.length) { hazards.forEach(z=>z.el.remove()); hazards=[]; }
       hazards.forEach(h => {
         h.x -= Math.max(4, (runner.currentSpeed || 6) * 0.9);
         h.el.style.left = `${h.x}px`;
